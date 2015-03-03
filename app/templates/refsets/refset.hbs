@@ -1,5 +1,3 @@
-<h1>View Reference Set</h1>
-
 {{#if error}}
 
 	{{#if unauthorised}}
@@ -22,7 +20,7 @@
 			
 	    <div class="panel panel-info ember-view fade in panelNoPadding refset-header">
 	        <div class="panel-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
-	             <h4 class="panel-title">Reference Set Header</h4>
+	             <h4 class="panel-title">View Reference Set - Reference Set Header</h4>
 	        </div>
 	        <div class="panel-collapse collapse in">
 	            <div id="collapseOne" class="panel-body">
@@ -320,15 +318,42 @@
 		</div>
 		
 		<div class="col-md-3">
+          
+                <div class="edit-heading">Editing</div>
+              <div class="editing-refset">
+					{{#if meta}}
 			
+				{{#if editMode}}									
+					{{#unless getConceptDataInProgress}}		
+						<button {{action 'cancelEdits'}} class="btn btn-primary btn-side-menu delete-refset margin-bottom">Discard Changes</button>
+                
+						<button {{action 'updateRefset'}} class="btn btn-success btn-side-menu edit-refset">Save changes</button>
+					{{/unless}}
+				{{else}}
+					{{#if user.token}}
+						{{#if active}}
+							<button class="btn btn-primary btn-side-menu icon-btn edit-refset" {{action 'toggleEditMode'}}><span class="btn-text">Edit Refset</span><span {{bind-attr class=':pointer :edit'}}></span></button>
+
+							{{#if published}}
+								<button class="btn btn-warning btn-side-menu icon-btn delete-refset" {{action 'inactivateRefset'}}><span class="btn-text">Inactivate Refset</span><span {{bind-attr class=':pointer :deactivate'}}></span></button>
+							{{/if}}
+							
+							<button class="btn btn-danger btn-side-menu icon-btn delete-refset" {{action 'deleteRefset'}}><span class="btn-text">Delete Refset</span><span {{bind-attr class=':pointer :undelete'}}></span></button>
+						{{else}}
+							<button class="btn btn-warning btn-side-menu icon-btn" {{action 'activateRefset'}}><span class="btn-text">Activate Refset</span><span {{bind-attr class=':pointer :icon :activate'}}></span></button>					
+						{{/if}}
+					{{/if}}
+				{{/if}}
+			{{/if}}
+            </div>
 			{{#if meta}}
 				{{#if editMode}}
-					<button class="btn btn-default btn-side-menu icon-btn" {{action 'toggleMetaData'}}><span class="btn-text">{{#if showMetaData}}Hide{{else}}Show{{/if}} Metadata</span><span {{bind-attr class=':pointer :icon showHeaderMetaData:hideinfo:info'}}></span></button>
+					<button class="btn btn-default btn-side-menu icon-btn metadata-btn border-top" {{action 'toggleMetaData'}}><span class="btn-text">{{#if showMetaData}}Hide{{else}}Show{{/if}} Metadata</span><span {{bind-attr class=':pointer  showHeaderMetaData:hideinfo:info'}}></span></button>
 
 					<hr>
 
 					<!-- This requires vendore/my_utilities/drag_drop_file_upload.js --->
-					<h2>Import Members <a {{action 'showImportHelp' }}class="right icon info pointer"></a></h2>
+					<div class="import-heading">Import Members <a {{action 'showImportHelp' }}class="right icon info pointer"></a></div>
 					<div id="fileUploadDropZone" class="fileUploadDropZone"><span id="droptext">Drag a file of component IDs or an individual component from the Snomed CT browser here.<br><br>Alternatively use the file requestor below to choose a file.</span></div>
 					<br><input type="file" id="refsetUploadFileInput" />
 					
@@ -350,14 +375,14 @@
 					
 				{{else}}
 					{{#if active}}
-						<button class="btn btn-default btn-side-menu icon-btn" {{bind-attr class=':pointer :icon showHeaderMetaData:hideinfo:info'}} {{action 'toggleMetaData'}}><span class="btn-text">{{#if showMetaData}}Hide{{else}}Show{{/if}} Metadata</span><span {{bind-attr class=':pointer :icon showHeaderMetaData:hideinfo:info'}}></span></button>
-						<button class="btn btn-default btn-side-menu icon-btn" {{action 'exportRefset'}}><span class="btn-text">Export Refset Pseudo Delta RF2</span><span {{bind-attr class=':pointer :icon :link'}}></span></button>
+						<button class="btn btn-default btn-side-menu icon-btn metadata-btn border-top" {{bind-attr class=':pointer  showHeaderMetaData:hideinfo:info'}} {{action 'toggleMetaData'}}><span class="btn-text">{{#if showMetaData}}Hide{{else}}Show{{/if}} Metadata</span><span {{bind-attr class=':pointer  showHeaderMetaData:hideinfo:info'}}></span></button>
+						<button class="btn btn-default btn-side-menu icon-btn metadata-btn" {{action 'exportRefset'}}><span class="btn-text">Export Refset Pseudo Delta RF2</span><span {{bind-attr class=':pointer :icon :link'}}></span></button>
 					{{/if}}
 				{{/if}}
 
-				<hr>
 			
-				<select id="filterSelect" class="btn btn-default btn-side-menu" {{action 'addFilter' on="change"}}>
+			
+				<select id="filterSelect" class="btn btn-default btn-side-menu menufilter" {{action 'addFilter' on="change"}}>
 					<option value="0">Filter members...</option>
 					{{#unless filterByInactiveConceptsIsActive}}<option value="filterByInactiveConcepts">Members with inactive components</option>{{/unless}}
 					
@@ -374,57 +399,74 @@
 					{{#unless filterByLastUpdateUserIsActive}}<option value="filterByLastUpdateUser">Last updater</option>{{/unless}}
 				</select>
 
-				<p class="filterItem">
-					Filter by description or referenced component id: <a {{action 'clearDescriptionFilter'}} class="right pointer">clear</a><br>
+				<div class="filterItem status"> 
+					 <div class="left-filter"><p class="filterItem">Filter by description or referenced component id: </p></div><a {{action 'clearDescriptionFilter'}} class="right pointer"><img src="assets/img/trashbin.png" width="40" height="40" alt=""/></a><br>
+                    <div class="filterinputs clearfix">
 					{{input type="text" value=filterByDescription placeholder="type filter here..." class="form-control" action="setSortToBestMatch" on="key-press"}}
-				</p>
+                        </div>
+				</div>
 
 				{{#if filterByInactiveConceptsIsActive}}
-					<p class="filterItem">
-						Active members with inactive concepts: {{radio-button value=true checked=filterByInactiveConcepts}} Active Concepts{{radio-button value=false checked=filterByInactiveConcepts}} Inactive concepts<a {{action 'removeFilter' 'filterByInactiveConcepts'}} class="right pointer">remove</a><br>
-					</p>
+					<div class="filterItem status"> <div class="left-filter"> <p class="filterItem">
+						Active members with inactive concepts:</p></div>
+                         <div class="right-filter"><a {{action 'removeFilter' 'filterByInactiveConcepts'}} class="right pointer"><img src="assets/img/closetab.png" width="40" height="40" alt=""/></a> </div>
+                         <div class="filterinputs statusinputs clearfix">
+                        {{radio-button value=true checked=filterByInactiveConcepts}} Active Concepts <span class="margin-left">{{radio-button value=false checked=filterByInactiveConcepts}} Inactive concepts </span>
+                             </div>
+					</div>
 				{{/if}}
 
 				{{#if filterByStatusIsActive}}
-					<p class="filterItem">
-						Status: {{radio-button value=true checked=filterByStatus}} Active {{radio-button value=false checked=filterByStatus}} Inactive <a {{action 'removeFilter' 'filterByStatus'}} class="right pointer">remove</a><br>
-					</p>
+					<div class="filterItem status"> <div class="left-filter"> <p class="filterItem">
+						Status: </p></div>   
+                        <div class="right-filter"> <a {{action 'removeFilter' 'filterByStatus'}} class="right pointer"><img src="assets/img/closetab.png" width="40" height="40" alt=""/></a></div>
+                       <div class="filterinputs statusinputs clearfix"> {{radio-button value=true checked=filterByStatus}} Active<span class="margin-left">{{radio-button value=false checked=filterByStatus}} Inactive </span> 
+					</div></div>
 				{{/if}}
 
 				
 				{{#if filterByModuleIdIsActive}}
-					<p class="filterItem">
-						Module Id: <a {{action 'removeFilter' 'filterByModuleId'}} class="right pointer">remove</a><br>
+					<div class="filterItem status">  <div class="left-filter"><p class="filterItem">
+						Module Id:</p> </div>  <div class="right-filter"> <a {{action 'removeFilter' 'filterByModuleId'}} class="right pointer"><img src="assets/img/closetab.png" width="40" height="40" alt=""/></a></div>
+                        <div class="filterdropdown clearfix">
 						{{snomed-data-dropdown value=filterByModuleId dataType="moduleTypesArray"}}
-					</p>
+                            </div>
+					</div>
 				{{/if}}
 
 				{{#if filterByEffectiveTimeIsActive}}
-					<p class="filterItem">
-						Effective Time: <a {{action 'removeFilter' 'filterByEffectiveTime'}} class="right pointer">remove</a><br>
+				<div class="filterItem status"><div class="left-filter"><p class="filterItem">
+						Effective Time:</p> </div>
+                    <div class="right-filter"><a {{action 'removeFilter' 'filterByEffectiveTime'}} class="right pointer"><img src="assets/img/closetab.png" width="40" height="40" alt=""/></a></div>
+                    <div class="filterdropdown clearfix">
 						{{#with effectiveTimeArray}}
 							{{snomed-data-dropdown value=filterByEffectiveTime dataType="effectiveTimeArray"}}
 						{{/with}}
-					</p>
+					</div></div>
 				{{/if}}
 
 				{{#if filterByModifiedMembersIsActive}}
-					<p class="filterItem">
-						Modified members:<a {{action 'removeFilter' 'filterByModifiedMembers'}} class="right pointer">remove</a><br>
+					<div class="filterItem status"> <div class="left-filter"> <p class="filterItem">
+						Modified members:</p></div>
+                        <div class="right-filter"><a {{action 'removeFilter' 'filterByModifiedMembers'}} class="right pointer"><img src="assets/img/closetab.png" width="40" height="40" alt=""/></a></div>
+                         <div class="filterinputs statusinputs clearfix">
 						{{radio-button value=1 checked=filterByModifiedMembers}} Modified {{radio-button value=0 checked=filterByModifiedMembers}} Unchanged
-					</p>				
+						</div>		</div>	
 				{{/if}}	
 	
 				{{#if filterByPublishedMembersIsActive}}
-					<p class="filterItem">
-						Published members:<a {{action 'removeFilter' 'filterByPublishedMembers'}} class="right pointer">remove</a><br>
-						{{radio-button value=1 checked=filterByPublishedMembers}} Published {{radio-button value=0 checked=filterByPublishedMembers}} Never Published
-					</p>				
+					<div class="filterItem status"> 
+						 <div class="left-filter"><p class="filterItem">Published members:</p></div> 
+                      <div class="right-filter"> <a {{action 'removeFilter' 'filterByPublishedMembers'}} class="right pointer"><img src="assets/img/closetab.png" width="40" height="40" alt=""/></a></div>
+						 <div class="filterinputs statusinputs clearfix"> {{radio-button value=1 checked=filterByPublishedMembers}} Published {{radio-button value=0 checked=filterByPublishedMembers}} Never Published
+						</div>	</div>		
 				{{/if}}	
 				
 				{{#if filterByLastUpdateDateIsActive}}
-					<p class="filterItem">
-						Modified since: <a {{action 'removeFilter' 'filterByLastUpdateDate'}} class="right pointer">remove</a><br>
+					<div class="filterItem status"> 
+						 <div class="left-filter"><p class="filterItem">Modified since: </p> </div>
+<div class="right-filter"><a {{action 'removeFilter' 'filterByLastUpdateDate'}} class="right pointer"><img src="assets/img/closetab.png" width="40" height="40" alt=""/></a></div>
+            	 <div class="filterdropdown clearfix">
 						{{view Em.TextField 
 							placeholder="Pick date..."
 						    valueBinding="filterByLastUpdateDate"
@@ -433,16 +475,18 @@
 							data-date-clear-btn="true"
 							data-date-autoclose="true"
 							class="form-control"}}	
-					</p>
+					</div></div>
 				{{/if}}
 	
 				{{#if filterByLastUpdateUserIsActive}}
-					<p class="filterItem">
-						Last Updater: <a {{action 'removeFilter' 'filterByLastUpdateUser'}} class="right pointer">remove</a><br>
+					<div class="filterItem status">  <div class="left-filter"><p class="filterItem">
+						Last Updater:</p> </div>
+                        <div class="right-filter"><a {{action 'removeFilter' 'filterByLastUpdateUser'}} class="right pointer"><img src="assets/img/closetab.png" width="40" height="40" alt=""/></a></div>
+                        	 <div class="filterdropdown clearfix">
 						{{#with moduleUpdatersArray}}
 							{{snomed-data-dropdown value=filterByLastUpdateUser dataType="moduleUpdatersArray"}}
 						{{/with}}
-					</p>
+					</div></div>
 				{{/if}}
 			{{/if}}
 			
@@ -452,29 +496,7 @@
 			
 			<hr>
 			
-			{{#if meta}}
-			
-				{{#if editMode}}									
-					{{#unless getConceptDataInProgress}}		
-						<button {{action 'cancelEdits'}} class="btn btn-danger left">Discard Changes</button>
-						<button {{action 'updateRefset'}} class="btn btn-success right">Save changes</button>
-					{{/unless}}
-				{{else}}
-					{{#if user.token}}
-						{{#if active}}
-							<button class="btn btn-primary btn-side-menu icon-btn" {{action 'toggleEditMode'}}><span class="btn-text">Edit Refset</span><span {{bind-attr class=':pointer :icon :edit'}}></span></button>
-
-							{{#if published}}
-								<button class="btn btn-warning btn-side-menu icon-btn" {{action 'inactivateRefset'}}><span class="btn-text">Inactivate Refset</span><span {{bind-attr class=':pointer :icon :deactivate'}}></span></button>
-							{{/if}}
-							
-							<button class="btn btn-danger btn-side-menu icon-btn" {{action 'deleteRefset'}}><span class="btn-text">Delete Refset</span><span {{bind-attr class=':pointer :icon :undelete'}}></span></button>
-						{{else}}
-							<button class="btn btn-warning btn-side-menu icon-btn" {{action 'activateRefset'}}><span class="btn-text">Activate Refset</span><span {{bind-attr class=':pointer :icon :activate'}}></span></button>					
-						{{/if}}
-					{{/if}}
-				{{/if}}
-			{{/if}}
+	
 		</div>
 	</div>
 
