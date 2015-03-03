@@ -6,7 +6,12 @@
         <li> {{#link-to 'refsets.new'}}  New Refset{{/link-to}}</li>
         {{/if}}
         </ul>
- 
+ 	{{#if user.token}}
+					<li><a href="#" {{action 'logout'}}>Logout</a></li>
+				{{else}}
+					<li><a href="#" {{action 'showRegistrationForm'}}>Register</a></li>
+					<li><a href="#" {{action 'showLoginForm'}}>Login</a></li>
+				{{/if}}
 </div>
 <div class="col-md-9 dashboard-news">
     <h1>Latest Refset Tool News</h1>
