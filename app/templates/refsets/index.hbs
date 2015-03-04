@@ -20,17 +20,17 @@
 			
 			
 			{{#if showMetaData}}
-			
+			<div class="meta-wrap">
 				<span class="effective-time items pointer" rel="tooltip" title="Latest member effective time"><a {{action 'setSortCriteria' 'latestEffectiveTime'}} class="pointer">Latest Effective Time</a> {{sort-icon sortBy sortOrder 'latestEffectiveTime'}}</span>
 				<span class="last-modified items pointer" rel="tooltip" title="Last date refset header or any member was modified"><a {{action 'setSortCriteria' 'modifiedDate'}} class="pointer">Last update date</a> {{sort-icon sortBy sortOrder 'modifiedDate'}}</span>
 				<span class="last-modified-by pointer items" rel="tooltip" title="User that last modified this refset"><a {{action 'setSortCriteria' 'modifiedBy'}} class="pointer">Last updated by</a> {{sort-icon sortBy sortOrder 'modifiedBy'}}</span>
-	
+	</div>
 		
 				{{#if refsets}}
         
 					{{#if filteredRefsets}}
    
-						 {{#collection Ember.ListView contentBinding="filteredRefsets" height=400 rowHeight=45 width="100%"}}
+						 {{#collection Ember.ListView contentBinding="filteredRefsets" height=400 rowHeight=70 width="100%"}}
 					
        <div {{bind-attr class=':list-group-item :member-list-item meta.disabled:inactiveConcept'}}>   
 								{{#link-to 'refsets.refset' uuid}}<button class="btn btn-primary right view-btn">View Refset</button>{{/link-to}}
@@ -44,11 +44,12 @@
 									<span class="status-id items">{{meta.status}}</span>
 									<span class="num-members items">{{totalNoOfMembers}}</span>
 							
-								
+									<div class="meta-wrap">
 							
 									<span class="effective-time items">{{effective-time-format latestEffectiveTime}}</span>
 									<span class="last-modified items">{{date-format modifiedDate}}</span>
 									<span class="last-modified-by items">{{modifiedBy}}</span>
+                                        </div>
 								</div>
 								
 						  {{/collection}}
