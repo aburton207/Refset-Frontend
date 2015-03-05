@@ -86,13 +86,20 @@ padding: 0px;
 .dashboard-sidebar h2{padding:15px 20px!important;}
 .dashboard-sidebar ul{list-style:none;padding:0px;margin:0px;}
 
-.dashboard-sidebar li{list-style:none;padding:10px 20px;font-family:"museo500"}
-.dashboard-sidebar li a{color:#7f7f7f}
+.dashboard-sidebar li{list-style:none;padding:10px 20px;font-family:"museo500"; border-bottom:1px solid #eeecec}
+.dashboard-sidebar li a{color:#00a6e5}
 .dashboard-sidebar li a:hover{color:#2c2d2f;text-decoration:none;}
 /*Dashboard News*/
 .dashboard-news {background-color:#fff; width:81%!important; padding-left:0px;font-family:"museo300"; font-size:14px;}
 .dashboard-news li{list-style:none; margin:8px;padding:7px;border-bottom:1px solid #eeecec;}
-.dashboard-news h4{font-family:"museo500"; font-size:14px;}
+.dashboard-news h4{font-family:"museo300"; font-size:14px;}
+
+.most-popular h3{padding-top:10px;font-weight:normal;font-family:"museo300"}
+.most-popular h4{padding:10px; color:#fff;font-weight:normal;font-family:"museo300"}
+.most-popular .snomed-heading{width:20%;float:left;background-color:#009bd5}
+
+.most-popular .refset-details{width:80%;float:left; background-color:#00a6e5}
+
 /*Browse Refsets */
 .browse-refsets{float:left;text-align:left;}
 .items {min-height:40px;background-color:#f6f7f6;float:left; text-align:left; padding:5px; border-right:1px solid #eeecec;display:inline-block;line-height:15px;font-family:"museo500"}
@@ -333,6 +340,8 @@ color: #fff;
 .view-btn{background-color:transparent;border:none;padding-top:10px; padding-right:10px;float:right;}
 .view-btn:hover{background-color:transparent;border:none;}
 /* End Dropdown Boxes */
+
+
 .col-md-9 {
     width:82%;
     float:right;
@@ -345,7 +354,16 @@ color: #fff;
     padding-right:0;
     background-color:#fff
 }
+.col-md-3 .news{ background-color:#fff}
+.col-md-3 .news-date{font-size:11px;}
 
+.news h4{color:#00a6e5; font-family:"museo500"}
+.dashboard .col-md-3{background-color:transparent}
+.dashboard .col-md-6 {
+    width:64%;
+    padding-left:1%;
+    padding-right:1%;
+}
 .col-md-3 h2 {
     font-family:"museo500";
     font-size:14px;
@@ -363,7 +381,8 @@ color: #fff;
     padding:15px;
     margin-bottom:0
 }
-
+.widget{width:100%; margin-bottom:10px;background-color:#fff}
+.widget a{color:#00a6e5;}
 }
 .btn:focus,.btn:active:focus,.btn.active:focus {
     outline:thin dotted;

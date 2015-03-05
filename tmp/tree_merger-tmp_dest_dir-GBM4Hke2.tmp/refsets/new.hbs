@@ -1,0 +1,216 @@
+
+
+<div class="row">
+
+	<div class="col-md-9">
+
+		<div class="panel panel-info ember-view fade in">
+		    <div class="panel-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#refsetHeader">
+		         <h4 class="panel-title">Create New Reference Set - Reference Set Header</h4>
+		    </div>
+		    <div class="panel-collapse collapse in">
+		        <div id="refsetHeader" class="panel-body">
+
+					{{#if isRF2Import}}
+						<label>Are you importing a published Reference Set?</label> {{radio-button value=true checked=published}} Yes {{radio-button value=false checked=published}} No
+					{{/if}}
+
+					<form id="refset-header" class="refset-header">
+
+						<table width="100%">
+
+							<tr>
+								{{#if isRF2Import}}	
+									<td class="label pointer">Refset Description</td>
+									<td class="content" colspan="3">
+										{{rf2FileToImport.label}}
+						  			</td>
+								{{else}}
+									<td class="content" colspan="4">
+										<label class="control-label pointer" rel="tooltip" title="Reference Set description should conform to the editorial rules for Fully Specified Name, including valid semantic (hierarchy) tags.">Reference Set Description</label>
+										{{textarea value=description class="form-control" required=true data-parsley-required-message="Refset Description is required" data-parsely-descriptioninuse="x" data-parsely-descriptioninuse-message="Description has to be unique. The description you have provided is already in use."}}
+									</td>
+								{{/if}}
+							</tr>
+
+							<tr>
+								<td class="label">Language</td>
+								<td class="content">
+									{{snomed-data-dropdown valueBinding="languageCode" dataType="languagesArray" class="form-control"}}
+					  			</td>
+							</tr>
+
+							<tr>
+								<td class="label">Refset Type</td>
+								<td class="content">
+									{{snomed-data-dropdown valueBinding="typeId" dataType="refsetTypesArray" class="form-control"}}
+								</td>
+								<td class="label">Refset Members Type</td>
+								<td class="content">
+									{{snomed-data-dropdown valueBinding="componentTypeId" dataType="componentTypesArray"}}
+					  			</td>
+							</tr>
+
+							<tr>
+								<td class="label"><span class="pointer" rel="tooltip" title="Planned publish member effective time">Planned Published Date</span></td>
+								<td class="content">
+									{{view Em.TextField 
+										placeholder="enter date..."
+									    valueBinding="meta.expectedReleaseDateInput"
+										data-provide="datepicker"
+										data-date-format="yyyymmdd"
+										data-date-clear-btn="true"
+										data-date-autoclose="true"
+										class="form-control"
+										required="true"
+										data-parsley-required-message="Planned Publish Date is required"}}								
+								</td>
+								<td class="label">Module</td><td class="content">
+									{{snomed-data-dropdown valueBinding="moduleId" dataType="moduleTypesArray" id="newRefsetModuleId" class="form-control"}}
+					  			</td>
+							</tr>
+							<tr>
+								{{#if isRF2Import}}									
+									<td class="label">SCTID</td>
+									<td class="content" colspan=3>
+										{{rf2FileToImport.sctId}}
+									</td>
+								{{/if}}
+							</tr>
+
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		{{#if isRF2Import}}
+
+		    <div class="panel panel-info ember-view fade in">
+		        <div class="panel-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#importRF2File">
+		             <h4 class="panel-title">Import RF2 File</h4>
+		        </div>
+		        <div class="panel-collapse collapse in">
+		            <div id="importRF2File" class="panel-body member-list">
+		            	
+						{{#if potentialMembersToImport}}
+
+			            	{{#if moreThanOneRefsetInRF2}}
+
+								Your RF2 file contains more than one Refset. Please choose which refset you wish to import:
+
+								<p>
+								{{#each mbr in potentialMembersToImport}}
+									<label class="notALabel">{{radio-button value=mbr name='refsetId' checked=rf2FileToImport}} {{mbr.sctId}} | {{mbr.label}} | {{mbr.concepts.length}} members</label><br>
+								{{/each}}
+								</p>
+
+							{{else}}
+
+								Your RF2 file contains a single Refset:
+
+								<p>
+								{{#each member in potentialMembersToImport}}					
+									{{member.sctId}} | {{member.label}} | {{member.concepts.length}} members<br>
+								{{/each}}
+								</p>
+
+							{{/if}}
+						{{else}}
+							There are no published refsets in that file...
+						{{/if}}
+					</div>
+				</div>
+			</div>	
+
+		{{else}}
+		
+			{{#unless importError}}
+				{{#if potentialMembersToImport}}
+				    <div class="panel panel-info ember-view fade in panelNoPadding">
+				        <div class="panel-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#importMemberList">
+				             <h4 class="panel-title">Review potential members to import. {{#if filteringActive}}Showing {{filteredImportMembers.length}} of {{potentialMembersToImport.length}} items matching your filter{{else}}({{potentialMembersToImport.length}}){{/if}}</h4>
+				        </div>
+				        <div class="panel-collapse collapse in">
+				            <div id="importMemberList" class="panel-body member-list">
+				            	{{#with controller.moduleTypesArray as moduleTypesArray }}
+									 {{#collection Ember.ListView contentBinding="filteredImportMembers" height=400 rowHeight=59 width="100%"}}
+										<div {{bind-attr class=':list-group-item :member-list-item meta.conceptActive::inactiveConcept meta.deleteConcept:deleteConcept'}}>
+											<span class="trashIcon"><a {{action 'toggleImportMember' referencedComponentId}} {{bind-attr class=':pointer :icon meta.deleteConcept:undelete:delete'}}"></a></span>
+		
+											<div class="listViewRow"><span class="sctid">{{referencedComponentId}}</span> | <span class="description">{{description}}</span> |</div>						
+		
+											<span class="tickIcon"><a {{action 'toggleImportMemberActive' referencedComponentId}} {{bind-attr class=':pointer :icon active:tick:cross'}}"></a></span>
+		
+											<label><span>{{view Em.Select value=content.moduleId content=moduleTypesArray optionValuePath="content.id" optionLabelPath="content.label" class="form-control"}}</span></label>
+					
+											{{#unless meta.conceptActive}}<label class="inactiveMemberText">Note: This component is INACTIVE</label>{{/unless}}
+										</div>
+									  {{/collection}}
+								  {{/with}}
+							</div>
+						</div>
+					</div>
+				{{/if}}
+			{{/unless}}
+			
+		{{/if}}
+	</div>
+							
+						
+	<div class="col-md-3">	
+  <div class="edit-heading">Editing</div>
+              <div class="editing-refset clearfix">
+                  		{{#unless getConceptDataInProgress}}		
+		
+			<button {{action "clearForm"}} class="btn btn-primary btn-side-menu delete-refset margin-bottom">Clear Form</button>
+			<button {{action "initRefsetImport"}} class="btn btn-success btn-side-menu edit-refset">Create Refset</button>
+		{{/unless}}
+                  </div>
+		<!-- This requires vendor/my_utilities/drag_drop_file_upload.js --->
+		<h2>Import Members <a {{action 'showImportHelp' }}class="right icon info pointer"></a></h2>
+		<div id="fileUploadDropZone" class="fileUploadDropZone"><span id="droptext">Drag an RF2 file, a file of component IDs or an individual component from the Snomed CT browser here.<br><br>Alternatively use the file requestor below to choose a file.</span></div>
+		<br><input type="file" id="refsetUploadFileInput" />
+		
+		{{#if potentialMembersToImport}}
+			<button {{action 'clearImportList' id}} class="btn btn-default btn-side-menu">Clear import list</button>
+		{{/if}}
+		
+		{{#if getConceptDataInProgress}}		
+			<h2>Importing member file</h2>
+			{{bs-progress progressBinding="importProgress" type="info" stripped="true"}}
+			<p><b>Please wait...</b></p>
+		{{else}}
+			{{#if importError}}
+				<h2>Importing failed</h2>
+				<p><b{{importError}}</b></p>
+			{{/if}}
+		{{/if}}
+		
+		{{#unless isRF2Import}}
+		{{#if potentialMembersToImport}}
+			<hr>
+			
+			<h2>Filter concepts</h2>
+		
+			<p>NOTE: All listed members will be imported regardless of this filter, which will only limit what you can view, not what wll be imported.
+			
+			<p class="filterItem">
+				Filter by description or referenced component id: <a {{action 'clearDescriptionFilter'}} class="right pointer">clear</a><br>
+				{{input type="text" value=filterByDescription placeholder="type filter here..." class="form-control"}}
+			</p>
+
+			<p class="filterItem">
+				Show: <br>
+				{{radio-button value=-1 checked=filterByInactiveConcepts}} All concepts<br>
+				{{radio-button value=false checked=filterByInactiveConcepts}} Inactive Concepts<br>
+				{{radio-button value=true checked=filterByInactiveConcepts}} Active Concepts<br>
+			</p>
+			
+		{{/if}}
+		{{/unless}}
+				
+
+		
+	</div>
+</div>
