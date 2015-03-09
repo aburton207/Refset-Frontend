@@ -1,10 +1,14 @@
-<div id="registrationForm" class="RefsetPanel">
-	<form>		
-		{{input value=regname 			type="text" 	placeholder="Your Name" class="form-control"}}
+<div id="registrationForm" class="RefsetPanel regform">
+	<form>	
+        <div class="row">
+        <h3>Your Name:</h3>
+		{{input value=regname 			type="text" 	placeholder="Please Enter Your Name" class="form-control"}}
+            </div>
+        <h3>Your Organization:</h3>
 		{{input value=regorg 			type="text" 	placeholder="Your organisation" class="form-control"}}
-		
-		{{input value=reguser 			type="text" 	placeholder="Already registered with for other IHTSDO tools? Enter your existing login ID here..." class="form-control"}}
-		
+		<h3>Already Registered with the IHTSDO?:</h3>
+		{{input value=reguser 			type="text" 	placeholder=" Enter your existing login ID here..." class="form-control"}}
+		<h3>Reason for Registration</h3>
 		{{textarea value=regnotes placeholder="Please tell us why you would like access to the Reference Set Management Service" class="form-control"}}
 	</form>
 </div>

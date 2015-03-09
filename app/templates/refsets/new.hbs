@@ -8,19 +8,15 @@
 		    <div class="panel-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#refsetHeader">
 		         <h4 class="panel-title">Create New Reference Set - Reference Set Header</h4>
 		    </div>
-		    <div class="panel-collapse collapse in">
-		        <div id="refsetHeader" class="panel-body">
-
-					{{#if isRF2Import}}
+            
+            <div class="row">
+            <div class="col-md-4">
+                
+                {{#if isRF2Import}}
 						<label>Are you importing a published Reference Set?</label> {{radio-button value=true checked=published}} Yes {{radio-button value=false checked=published}} No
 					{{/if}}
-
-					<form id="refset-header" class="refset-header">
-
-						<table width="100%">
-
-							<tr>
-								{{#if isRF2Import}}	
+<div class="row">
+                			{{#if isRF2Import}}	
 									<td class="label pointer">Refset Description</td>
 									<td class="content" colspan="3">
 										{{rf2FileToImport.label}}
@@ -31,29 +27,33 @@
 										{{textarea value=description class="form-control" required=true data-parsley-required-message="Refset Description is required" data-parsely-descriptioninuse="x" data-parsely-descriptioninuse-message="Description has to be unique. The description you have provided is already in use."}}
 									</td>
 								{{/if}}
-							</tr>
-
-							<tr>
-								<td class="label">Language</td>
-								<td class="content">
+                </div>
+                </div>
+                 <div class="col-md-4">
+                     <div class="row">
+                	<span class="label">Language</span>
+							
 									{{snomed-data-dropdown valueBinding="languageCode" dataType="languagesArray" class="form-control"}}
-					  			</td>
-							</tr>
-
-							<tr>
-								<td class="label">Refset Type</td>
-								<td class="content">
-									{{snomed-data-dropdown valueBinding="typeId" dataType="refsetTypesArray" class="form-control"}}
-								</td>
-								<td class="label">Refset Members Type</td>
-								<td class="content">
+                </div>
+                		<span class="label">Module</span>
+                               
+									{{snomed-data-dropdown valueBinding="moduleId" dataType="moduleTypesArray" id="newRefsetModuleId" class="form-control"}}
+					  							
+                </div>
+                 <div class="col-md-4">
+           <div class="row">
+               <span class="label">Refset Members Type</span>
+						
 									{{snomed-data-dropdown valueBinding="componentTypeId" dataType="componentTypesArray"}}
-					  			</td>
-							</tr>
-
-							<tr>
-								<td class="label"><span class="pointer" rel="tooltip" title="Planned publish member effective time">Planned Published Date</span></td>
-								<td class="content">
+            </div>
+                <div class="row">
+                    <span class="label">Refset Type</td>
+								
+									{{snomed-data-dropdown valueBinding="typeId" dataType="refsetTypesArray" class="form-control"}}
+                    </div>
+                <div class="row">
+                    	<span class="label"><span class="pointer" rel="tooltip" title="Planned publish member effective time">Planned Published Date</span></span>
+								
 									{{view Em.TextField 
 										placeholder="enter date..."
 									    valueBinding="meta.expectedReleaseDateInput"
@@ -64,11 +64,21 @@
 										class="form-control"
 										required="true"
 										data-parsley-required-message="Planned Publish Date is required"}}								
-								</td>
-								<td class="label">Module</td><td class="content">
-									{{snomed-data-dropdown valueBinding="moduleId" dataType="moduleTypesArray" id="newRefsetModuleId" class="form-control"}}
-					  			</td>
-							</tr>
+								
+                    </div>
+                
+                </div></div>
+		    <div class="panel-collapse collapse in">
+		        <div id="refsetHeader" class="panel-body">
+
+					
+					<form id="refset-header" class="refset-header">
+
+						<table width="100%">
+
+
+
+
 							<tr>
 								{{#if isRF2Import}}									
 									<td class="label">SCTID</td>
@@ -168,10 +178,11 @@
 		{{/unless}}
                   </div>
 		<!-- This requires vendor/my_utilities/drag_drop_file_upload.js --->
-		<h2>Import Members <a {{action 'showImportHelp' }}class="right icon info pointer"></a></h2>
-		<div id="fileUploadDropZone" class="fileUploadDropZone"><span id="droptext">Drag an RF2 file, a file of component IDs or an individual component from the Snomed CT browser here.<br><br>Alternatively use the file requestor below to choose a file.</span></div>
-		<br><input type="file" id="refsetUploadFileInput" />
+          <div class="edit-heading">Import Members <a {{action 'showImportHelp' }}class="right icon info pointer"></a></div>
 		
+		<div id="fileUploadDropZone" class="fileUploadDropZone"><span id="droptext">Drag an RF2 file, a file of component IDs or an individual component from the Snomed CT browser here.<br><br>Alternatively use the file requestor below to choose a file.</span></div>
+		<div class="upload-btn"><input type="file" id="refsetUploadFileInput" /></div>
+		<button {{action "initRefsetImport"}} class="btn btn-success btn-side-menu edit-refset">Upload and Create Refset</button>
 		{{#if potentialMembersToImport}}
 			<button {{action 'clearImportList' id}} class="btn btn-default btn-side-menu">Clear import list</button>
 		{{/if}}
