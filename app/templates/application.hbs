@@ -16,15 +16,9 @@
             </ul>
             <ul class="nav navbar-nav navbar-right ">
 				<li>{{#link-to 'dashboard'}}Dashboard{{/link-to}}</li>
-                	<li>{{#link-to 'refsets' (query-params showUnpublished="0" showInactive="0")}}Browse Refsets{{/link-to}}</li>
-						{{#if user.token}}<li>{{#link-to 'refsets.new'}}New Refset{{/link-to}}</li>{{/if}}
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Refset Directory <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li>{{#link-to 'refsets' (query-params showUnpublished="0" showInactive="0")}}Browse Refsets{{/link-to}}</li>
-						{{#if user.token}}<li>{{#link-to 'refsets.new'}}New Refset{{/link-to}}</li>{{/if}}
-					</ul>
-				</li>
+                	<li>{{#link-to 'refsets' (query-params showUnpublished="0" showInactive="0")}}Browse Refset Directory{{/link-to}}</li>
+						{{#if user.token}}<li>{{#link-to 'refsets.new'}}Create New Refset{{/link-to}}</li>{{/if}}
+				
 		
 		     
 				
