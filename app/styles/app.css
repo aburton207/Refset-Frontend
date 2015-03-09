@@ -33,7 +33,11 @@
     font-style: normal;
 
 }
-
+.pointer {
+  cursor: pointer;
+  color: #5e5f61;
+}
+.blue-link{color:#00a7e1}
 .clearfix {
     clear:both
 }
@@ -102,7 +106,7 @@ padding: 0px;
 
 /*Browse Refsets */
 .browse-refsets{float:left;text-align:left;}
-.items {min-height:40px;background-color:#f6f7f6;float:left; text-align:left; padding:5px; border-right:1px solid #eeecec;display:inline-block;line-height:15px;font-family:"museo500"}
+.items {min-height:40px;float:left; text-align:left; padding:5px; border-right:1px solid #eeecec;display:inline-block;line-height:15px;font-family:"museo500"}
 .items a{color:#2c2d2f}
 .ember-list-item-view .items{background-color:transparent;min-height:50px;padding:5px;border-right:1px solid #eeecec;font-family:"museo300";}
 
@@ -191,7 +195,21 @@ select#filterSelect:focus {
 .container {
     width:750px
 }
+/*Snomed Grey Headings*/
+.title-headings{background-color:#f6f7f6}
+/*Meta Row heading */
+.metarow-heading{background-color:#f6f7f6; border-top:1px solid #eeecec; width:100%;float:left;}
+.metarow-heading a{color:#7b7b7c; font-family: "museo300";}
+.metarow-heading .items{min-height:30px;}
+.metarow-row{ width:100%;float:left;border-top:1px solid #eeecec}
 
+/*Snomed Blue Headings*/
+.sub-header .snomed-ct-heading{width:33%;float:left;background-color:#009bd5}
+.sub-header .status-heading{width:15%;float:left;background-color:#00a6e5}
+.sub-header .origin-heading{width:29%;float:left;background-color:#00b9ff}
+.sub-header .plus-heading{width:3%;float:left;background-color:#1ac1ff}
+.sub-header .metadata-toggle{background:none;padding:11px 14px 10px 14px;color:#fff;border-color:transparent}
+.sub-header h2{color:#fff; font-size:14px;padding:15px;margin:0px;}
 /*Left Nav Filters*/
 button:focus,
 select#filterSelect,
@@ -354,6 +372,9 @@ color: #fff;
     padding-right:0;
     background-color:#fff
 }
+
+/*new refset*/
+
 .col-md-3 .news{ background-color:#fff}
 .col-md-3 .news-date{font-size:11px;}
 
@@ -508,7 +529,7 @@ line-height:13px;}
 /*.first{margin-left:15px;}*/
 .num-members{width:7%;}
 .view-btn{font-size:12px;}
-.effective-time{width:110px;}
+.effective-time{width:170px;}
 .last-modified{width:125px;}
 .last-modified-by{width:125px;}
 .meta-wrap{width:100%;background-color:#ededed;float:left;}
@@ -526,25 +547,8 @@ line-height:13px;}
 /*.first{margin-left:15px;}*/
 .num-members{width:7%;}
 .view-btn{font-size:12px;}
-.effective-time{width:110px;}
+.effective-time{width:170px;}
 .last-modified{width:125px;}
 .last-modified-by{width:125px;}
-.meta-wrap{width:100%;background-color:#ededed;float:left;}
-}
-@media screen and (min-width: 1820px) {
-/*Table Widths*/
-.refset-id {width:100px;}
-.desc-id{width:300px;}
-.lang-id{width:85px}
-.refset-id{width:80px;}
-.module-id{width:166px}
-.comp-id{width:160px}
-.status-id{width:75px;}
-/*.first{margin-left:15px;}*/
-.num-members{width:65px;}
-.effective-time{width:110px;}
-.last-modified{width:125px;}
-.last-modified-by{width:125px;}
-.meta-wrap{width:auto;background-color:transparent;float:left;}
-
+/*.meta-wrap{width:100%;background-color:#ededed;float:left;}*/
 }
