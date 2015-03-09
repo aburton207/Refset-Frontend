@@ -36,7 +36,7 @@
         
 					{{#if filteredRefsets}}
    
-						 {{#collection Ember.ListView contentBinding="filteredRefsets" height=400 rowHeight=90 width="100%"}}
+						 {{#collection Ember.ListView contentBinding="filteredRefsets" height=600 rowHeight=90 width="100%"}}
 					
        <div {{bind-attr class=':list-group-item :member-list-item meta.disabled:inactiveConcept'}}>   
 								<span class="refset-id items">{{sctId}}</span>{{#if sctId}}{{/if}} 
@@ -70,7 +70,7 @@
 			{{else}}
 				{{#if refsets}}
 					{{#if filteredRefsets}}
-						 {{#collection Ember.ListView contentBinding="filteredRefsets" height=400 rowHeight=50 width="100%"}}
+						 {{#collection Ember.ListView contentBinding="filteredRefsets" height=600 rowHeight=50 width="100%"}}
 							<div {{bind-attr class=':list-group-item :member-list-item meta.disabled:inactiveConcept'}}>
 								
 								<div class=""><span class="refset-id items">{{sctId}}</span>{{#if sctId}}{{/if}} 
