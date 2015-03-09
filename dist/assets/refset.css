@@ -131,7 +131,7 @@ padding: 0px;
 }
 
 #header a:hover {
-    color:#00a6e5
+   background-color: #00a6e5; color:#fff
 }
 
 #header a:active {
