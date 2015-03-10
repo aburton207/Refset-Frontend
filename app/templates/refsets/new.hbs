@@ -36,6 +36,14 @@
 										<div class="col-md-9"> {{textarea value=description class="form-control" required=true data-parsley-required-message="Refset Description is required" data-parsely-descriptioninuse="x" data-parsely-descriptioninuse-message="Description has to be unique. The description you have provided is already in use."}}</div>
 									</div>
 								{{/if}}
+           <div class="row">
+                         	{{#if isRF2Import}}									
+									<div class="col-md-4"><span class="label">SCTID</span></div>
+									 <div class="col-md-8">	
+										{{rf2FileToImport.sctId}}
+									</div>
+								{{/if}}
+                         </div>
                 </div>
                 </div>
                  <div class="col-md-4">
@@ -77,14 +85,7 @@
 										data-parsley-required-message="Planned Publish Date is required"}}								
 								
                     </div></div>
-                     <div class="row">
-                         	{{#if isRF2Import}}									
-									<td class="label">SCTID</td>
-									<td class="content" colspan=3>
-										{{rf2FileToImport.sctId}}
-									</td>
-								{{/if}}
-                         </div>
+              
                 
                 </div></div>
 		   
