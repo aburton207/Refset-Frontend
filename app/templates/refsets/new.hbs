@@ -185,7 +185,7 @@
 		<div id="fileUploadDropZone" class="fileUploadDropZone"><span id="droptext">Drag an RF2 file, a file of component IDs or an individual component from the Snomed CT browser here.<br><br>Alternatively use the file requestor below to choose a file.</span></div>
         <div class="editing-refset clearfix">
 		<div class="upload-btn"><input type="file" id="refsetUploadFileInput" /></div>
-		<button {{action "initRefsetImport"}} class="btn btn-success btn-side-menu edit-refset">Upload and Create Refset</button>
+		<button {{action "initRefsetImport"}} class="btn btn-success btn-side-menu edit-refset clear-import">Upload and Create Refset</button>
 		{{#if potentialMembersToImport}}
 			<button {{action 'clearImportList' id}} class="btn btn-default btn-side-menu">Clear import list</button>
 		{{/if}}
