@@ -18,16 +18,16 @@
                 
                 {{#if isRF2Import}}
                 <div class="row">
-					<div class="col-md-6">	<span class="label"><label>Are you importing a published Reference Set?</label> </span></div>
-                  <div class="col-md-6">  {{radio-button value=true checked=published}} Yes {{radio-button value=false checked=published}} No </div>
+					<div class="col-md-4">	<span class="label"><label>Are you importing a published Reference Set?</label> </span></div>
+                  <div class="col-md-8">  {{radio-button value=true checked=published}} Yes {{radio-button value=false checked=published}} No </div>
                     </div>
 					{{/if}}
 <div class="row">
                 			{{#if isRF2Import}}	
      <div class="row">
-									 <div class="col-md-3"><span class="label pointer">Refset Description</span></div>
+									 <div class="col-md-4"><span class="label pointer">Refset Description</span></div>
 									
-									 <div class="col-md-9">	{{rf2FileToImport.label}} </div>
+									 <div class="col-md-8">	{{rf2FileToImport.label}} </div>
 						  		
          </div>
 								{{else}}
