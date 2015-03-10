@@ -212,7 +212,9 @@ select#filterSelect:focus {
 .new-refset .label{white-space:normal;font-family:"museo300";font-size:13px;color:#2c2d2f;line-height:14px;}
 .new-refset select, .new-refset input, .new-refset textarea, .new-refset #newRefsetModuleId{padding:8px;border-radius:0px!important;background-color:#f6f7f6;  -webkit-appearance: none;
   -webkit-border-radius: 0px;}
-
+.new-refset input[type=radio]:checked {
+    background-color:#009bd5;
+}
 /*Snomed Grey Headings*/
 .title-headings{background-color:#f6f7f6}
 /*Meta Row heading */
