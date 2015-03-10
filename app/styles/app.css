@@ -205,6 +205,14 @@ select#filterSelect:focus {
 .container {
     width:750px
 }
+/*columns for new refset*/
+.new-refset .col-md-3{width:21%}
+.new-refset .col-md-9{width:79%}
+.new-refset .row{padding-top:5px;}
+.new-refset .label{white-space:normal;font-family:"museo300";font-size:13px;color:#2c2d2f;line-height:14px;}
+.new-refset select, .new-refset input, .new-refset textarea, .new-refset #newRefsetModuleId{padding:8px;border-radius:0px!important;background-color:#f6f7f6;  -webkit-appearance: none;
+  -webkit-border-radius: 0px;}
+
 /*Snomed Grey Headings*/
 .title-headings{background-color:#f6f7f6}
 /*Meta Row heading */
@@ -295,8 +303,6 @@ color: #fff;
 .margin-bottom{margin-bottom:10px!important;}
 .border-top{border-top:2px solid #eeecec!important;}
 /*meta data*/
-.new-refset .label{white-space:normal;font-family:"museo300";font-size:13px;color:#2c2d2f;line-height:14px;}
-.new-refset select, .new-refset input, .new-refset textarea, .new-refset #newRefsetModuleId{border-radius:0px!important;}
 
 .edit-heading {
     color:#fff;

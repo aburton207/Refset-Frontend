@@ -8,7 +8,11 @@
 		    <div class="panel-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#refsetHeader">
 		         <h4 class="panel-title">Create New Reference Set - Reference Set Header</h4>
 		    </div>
-            
+             <div class="panel-collapse collapse in">
+		        <div id="refsetHeader" class="panel-body">
+
+					
+					<form id="refset-header" class="refset-header">
             <div class="row">
             <div class="col-md-4">
                 
@@ -22,10 +26,10 @@
 										{{rf2FileToImport.label}}
 						  			</td>
 								{{else}}
-									<td class="content" colspan="4">
-										<label class="control-label pointer" rel="tooltip" title="Reference Set description should conform to the editorial rules for Fully Specified Name, including valid semantic (hierarchy) tags.">Reference Set Description</label>
-										{{textarea value=description class="form-control" required=true data-parsley-required-message="Refset Description is required" data-parsely-descriptioninuse="x" data-parsely-descriptioninuse-message="Description has to be unique. The description you have provided is already in use."}}
-									</td>
+									<div class="row">
+										<div class="col-md-3"> <span class="control-label pointer label" rel="tooltip" title="Reference Set description should conform to the editorial rules for Fully Specified Name, including valid semantic (hierarchy) tags.">Reference Set Description</span></div>
+										<div class="col-md-9"> {{textarea value=description class="form-control" required=true data-parsley-required-message="Refset Description is required" data-parsely-descriptioninuse="x" data-parsely-descriptioninuse-message="Description has to be unique. The description you have provided is already in use."}}</div>
+									</div>
 								{{/if}}
                 </div>
                 </div>
@@ -36,11 +40,12 @@
 							  <div class="col-md-9">
 									{{snomed-data-dropdown valueBinding="languageCode" dataType="languagesArray" class="form-control"}}
                 </div></div>
-                		<span class="label">Module</span>
+                      <div class="Row"> <div class="col-md-3">
+                		<span class="label">Module</span></div>
                                
-									{{snomed-data-dropdown valueBinding="moduleId" dataType="moduleTypesArray" id="newRefsetModuleId" class="form-control"}}
+									 <div class="col-md-9">{{snomed-data-dropdown valueBinding="moduleId" dataType="moduleTypesArray" id="newRefsetModuleId" class="form-control"}}
 					  							
-                </div>
+                </div></div></div>
                  <div class="col-md-4">
            <div class="row">
              <div class="col-md-3">  <span class="label">Refset Members Type</span></div>
@@ -48,13 +53,13 @@
 								 <div class="col-md-9">	{{snomed-data-dropdown valueBinding="componentTypeId" dataType="componentTypesArray"}} </div>
             </div>
                 <div class="row">
-                    <span class="label">Refset Type</td>
+                    <div class="col-md-3"> <span class="label">Refset Type</span></div>
 								
-									{{snomed-data-dropdown valueBinding="typeId" dataType="refsetTypesArray" class="form-control"}}
-                    </div>
+								 <div class="col-md-9">	{{snomed-data-dropdown valueBinding="typeId" dataType="refsetTypesArray" class="form-control"}}
+                    </div></div>
                 <div class="row">
-                    	<span class="label"><span class="pointer" rel="tooltip" title="Planned publish member effective time">Planned Published Date</span></span>
-								
+                     <div class="col-md-3"> <span class="pointer label" rel="tooltip" title="Planned publish member effective time">Planned Published Date</span></div>
+								  <div class="col-md-9">
 									{{view Em.TextField 
 										placeholder="enter date..."
 									    valueBinding="meta.expectedReleaseDateInput"
@@ -66,30 +71,20 @@
 										required="true"
 										data-parsley-required-message="Planned Publish Date is required"}}								
 								
-                    </div>
-                
-                </div></div>
-		    <div class="panel-collapse collapse in">
-		        <div id="refsetHeader" class="panel-body">
-
-					
-					<form id="refset-header" class="refset-header">
-
-						<table width="100%">
-
-
-
-
-							<tr>
-								{{#if isRF2Import}}									
+                    </div></div>
+                     <div class="row">
+                         	{{#if isRF2Import}}									
 									<td class="label">SCTID</td>
 									<td class="content" colspan=3>
 										{{rf2FileToImport.sctId}}
 									</td>
 								{{/if}}
-							</tr>
+                         </div>
+                
+                </div></div>
+		   
 
-						</table>
+					
 					</form>
 				</div>
 			</div>
