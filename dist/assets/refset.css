@@ -295,6 +295,9 @@ color: #fff;
 .margin-bottom{margin-bottom:10px!important;}
 .border-top{border-top:2px solid #eeecec!important;}
 /*meta data*/
+.new-refset .label{white-space:normal;font-family:"museo300";font-size:13px;color:#2c2d2f;line-height:14px;}
+.new-refset select, .new-refset input, .new-refset textarea, .new-refset #newRefsetModuleId{border-radius:0px!important;}
+
 .edit-heading {
     color:#fff;
     background-color:#00a6e5;

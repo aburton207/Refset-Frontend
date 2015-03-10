@@ -2,7 +2,7 @@
 
 <div class="row new-refset">
 
-	<div class="col-md-9">
+	<div class="col-md-9 new-refset">
 
 		<div class="panel panel-info ember-view fade in">
 		    <div class="panel-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#refsetHeader">
@@ -31,10 +31,11 @@
                 </div>
                  <div class="col-md-4">
                      <div class="row">
-                	<span class="label">Language</span>
-							
+                         <div class="col-md-3">
+                	<span class="label">Language</span></div>
+							  <div class="col-md-9">
 									{{snomed-data-dropdown valueBinding="languageCode" dataType="languagesArray" class="form-control"}}
-                </div>
+                </div></div>
                 		<span class="label">Module</span>
                                
 									{{snomed-data-dropdown valueBinding="moduleId" dataType="moduleTypesArray" id="newRefsetModuleId" class="form-control"}}
@@ -42,9 +43,9 @@
                 </div>
                  <div class="col-md-4">
            <div class="row">
-               <span class="label">Refset Members Type</span>
+             <div class="col-md-3">  <span class="label">Refset Members Type</span></div>
 						
-									{{snomed-data-dropdown valueBinding="componentTypeId" dataType="componentTypesArray"}}
+								 <div class="col-md-9">	{{snomed-data-dropdown valueBinding="componentTypeId" dataType="componentTypesArray"}} </div>
             </div>
                 <div class="row">
                     <span class="label">Refset Type</td>
@@ -181,6 +182,7 @@
           <div class="edit-heading">Import Members <a {{action 'showImportHelp' }}class="right icon info pointer"></a></div>
 		
 		<div id="fileUploadDropZone" class="fileUploadDropZone"><span id="droptext">Drag an RF2 file, a file of component IDs or an individual component from the Snomed CT browser here.<br><br>Alternatively use the file requestor below to choose a file.</span></div>
+        <div class="editing-refset clearfix">
 		<div class="upload-btn"><input type="file" id="refsetUploadFileInput" /></div>
 		<button {{action "initRefsetImport"}} class="btn btn-success btn-side-menu edit-refset">Upload and Create Refset</button>
 		{{#if potentialMembersToImport}}
@@ -200,7 +202,7 @@
 		
 		{{#unless isRF2Import}}
 		{{#if potentialMembersToImport}}
-			<hr>
+			</div>
 			
 			<h2>Filter concepts</h2>
 		
