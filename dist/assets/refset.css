@@ -125,7 +125,11 @@ padding: 0px 0px 5px 7px;
     padding:4px 0px;
     border-radius:0
 }
-
+button:focus{-webkit-appearance:none;
+    -moz-appearance:none;}
+button {
+    outline: none!important;
+}
 #header a {
     color:#fff;
     font-family:"museo300",Helvetica,Arial,sans-serif
@@ -220,6 +224,31 @@ select#filterSelect:focus {
 }
 .clear-import{border-radius:0px;text-align:left;}
 .clear-import a:hover{border:none;}
+
+/* Edit Refset*/
+.edit-refset-header a:hover{text-decoration:none; color:#009bd5}
+.edit-refset-header{padding-left:0px;font-family: "museo500";}
+.edit-refset-header li {float:left;list-style:none; padding:5px;height:50px;}
+.edit-refset-header li.Referenced-Component-Id{width:8.05%;}
+.edit-refset-header li.Description-Id{width:24.75%;}
+.edit-refset-header li.Status-Id{width:5.90%;}
+.edit-refset-header li.Time-Id{width:5.9%;}
+.edit-refset-header li.Updated-Id{width:8%;}
+.edit-refset-header li.Module-Id{width:11.9%;}
+.edit-refset-header li.UUID{width:14.8%;}
+
+.edit-refset-members{padding-left:0px; font-family: "museo300";}
+.edit-refset-members li{float:left;list-style:none;padding:5px;vertical-align:middle;text-wrap:normal;word-wrap: break-word;}
+.edit-refset-members li.Referenced-Component-Id{width:8%;margin-left:1px;}
+.edit-refset-members li.Description-Id{width:25%;padding-right:2px;}
+.edit-refset-members li.Status-Id{width:6%;padding-top:15px;}
+.edit-refset-members li.Time-Id{width:6%;}
+.edit-refset-members li.Updated-Id{width:8%;}
+.edit-refset-members li.Module-Id{width:12%;}
+.edit-refset-members li.UUID{width:15%;}
+.edit-refset-members li.Status-Id .inactive-btn{padding:8px;background-color:#ffa800;color:#fff; width:65px;text-align:center;}
+.edit-refset-members li.Status-Id .active-btn{padding:8px;background-color:#1eb07b;color:#fff;width:100%;text-align:center;}
+
 /*Snomed Grey Headings*/
 .title-headings{background-color:#f6f7f6}
 /*Meta Row heading */
@@ -344,8 +373,11 @@ color: #fff;
     font-size:14px;
     padding:13px 20px;
     border-radius:0;
-    margin-bottom:0
+    margin-bottom:0;
+	   -webkit-appearance:none;
+    -moz-appearance:none;
 }
+.metadata-btn:hover{border-bottom:2px solid #eeecec;background-color:#00a6e5;color:#fff!important}
 .edit-refset{ color:#fff;
     background-color:#1eb07b;
     border:none;
@@ -368,8 +400,17 @@ color: #fff;
     border-radius:0;
     margin-bottom:0px;
 	text-align:left;}
+.inactivate-refset{color:#fff;
+    background-color:#ffa800;
+    border:none;
+    font-family:"museo500";
+    font-size:14px;
+    padding:13px 20px;
+    border-radius:0;
+    margin-bottom:10px;
+	text-align:left;}
+	.inactivate-refset:hover{background-color:#ff7200;color:#fff!important}
 
-.metadata-btn:hover{background-color:#00a6e5; color:#fff!important;border-bottom:2px solid #eeecec;}
 .refresh-btn {
     color:#fff;
     background-color:#1eb07b;
