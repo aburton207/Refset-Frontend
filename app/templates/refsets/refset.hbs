@@ -16,7 +16,7 @@
 
 	<div class="row">
 		
-		<div class="col-md-9">
+		<div class="col-md-9 new-refset">
 			
 	    <div class="panel panel-info ember-view fade in panelNoPadding refset-header">
 	        <div class="panel-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
@@ -26,20 +26,49 @@
 	            <div id="collapseOne" class="panel-body">
 	   				<form class="refset-header">
 							   <div class="col-md-4">
+                                    <div class="row">
                         	{{#if published}}
 									
-                                   <div class="row">
+                                  
                                    <div class="col-md-3">	 <span class="label">Description</span></div>
 									 <div class="col-md-9">	{{description}}</div>
-                                       </div>
+                                    
 								{{else}}
 									{{#if editMode}}
-										<td class="content" colspan="5">{{textarea value=description class="form-control"}}</td>
+                                            <div class="col-md-3">	 <span class="label">Description</span></div>
+									 <div class="col-md-9">	{{textarea value=description class="form-control"}}</div>
+										
 									{{else}}
-										<td class="label">Description</td>
-										<td class="content title" colspan="4">{{description}}</td>
+                                        
+									    <div class="col-md-3">	 <span class="label">Description</span></div>
+									 <div class="col-md-9">	{{description}}</div>
 									{{/if}}
 								{{/if}}
+                                          </div>
+                                          <div class="row">
+                                   <div class="col-md-3">	 <span class="label">Module Id</span></div>
+									 
+							
+                                      <div class="col-md-9">
+									{{#if published}}
+										<input type=hidden id="newRefsetModuleId" {{bind-attr value="moduleId"}}>
+										{{refset-list-item-span 'module-id' moduleId moduleTypes}}
+									{{else}}
+										{{#if editMode}}
+											{{snomed-data-dropdown value=moduleId dataType="moduleTypesArray" id="newRefsetModuleId"}}
+										{{else}}
+											<input type=hidden id="newRefsetModuleId" {{bind-attr value="moduleId"}}>
+											{{refset-list-item-span 'module-id' moduleId moduleTypes}}
+										{{/if}}																	
+									{{/if}}
+                                          </div>
+                                       </div>
+							
+                                <div class="row">
+                                   <div class="col-md-3">	<span class="pointer label">Planned Publish Date</span></div>
+									  <div class="col-md-9">	 {{effective-time-format expectedReleaseDate}} </div>
+							</div>
+							
                         </div>
                          <div class="col-md-4">
                              <div class="row">
@@ -50,6 +79,30 @@
                              <div class="col-md-3">	 <span class="label">UUID</span></div>
                              <div class="col-md-9">{{uuid}}	</div>
                              </div>
+                              <div class="row">
+								<div class="col-md-3">	<span class="pointer label">Refset Member Type Id</span></div>
+                                    
+                                    <div class="col-md-9">
+                                   
+									{{#if published}}
+ 										{{refset-list-item-span 'component-type-id' componentTypeId componentTypes}}
+									{{else}}
+										{{#if editMode}}
+											{{snomed-data-dropdown value=componentTypeId dataType="componentTypesArray"}}
+										{{else}}
+											{{refset-list-item-span 'component-type-id' componentTypeId componentTypes}}
+										{{/if}}																			
+							  		{{/if}}		
+								
+                                        
+                                        </div></div>
+                                 <div class="row">
+								<div class="col-md-3">	<span class="pointer label">Earliest Effective Time</span></div>
+							<div class="col-md-9">
+                                    			
+									{{effective-time-format earliestEffectiveTime}}
+								
+                                  </div></div>
                         </div>
                          <div class="col-md-4">
                            <div class="row">
@@ -72,58 +125,10 @@
 									{{effective-time-format latestEffectiveTime}}
 								</div>
                                       </div>
-                        </div>
-						<table width="100%">
-							
-							<tr class="hr"><td width="100"></td><td width="300"><td width="100"></td>
-
-							
-
-		
-							<tr>
-                              
-							</tr>
-
-							<tr>
-								<td class="label">Refset Member Type Id</td><td class="content">
-									{{#if published}}
- 										{{refset-list-item-span 'component-type-id' componentTypeId componentTypes}}
-									{{else}}
-										{{#if editMode}}
-											{{snomed-data-dropdown value=componentTypeId dataType="componentTypesArray"}}
-										{{else}}
-											{{refset-list-item-span 'component-type-id' componentTypeId componentTypes}}
-										{{/if}}																			
-							  		{{/if}}		
-								</td>
-								<td class="label" rel="tooltip" title="Earliest member effective time"><span class="pointer">Earliest Effective Time</span></td><td class="content" colspan=2>				
-									{{effective-time-format earliestEffectiveTime}}
-								</td>
-							</tr>
-							
-							<tr>
-								<td class="label">Module Id</td><td class="content">
-									{{#if published}}
-										<input type=hidden id="newRefsetModuleId" {{bind-attr value="moduleId"}}>
-										{{refset-list-item-span 'module-id' moduleId moduleTypes}}
-									{{else}}
-										{{#if editMode}}
-											{{snomed-data-dropdown value=moduleId dataType="moduleTypesArray" id="newRefsetModuleId"}}
-										{{else}}
-											<input type=hidden id="newRefsetModuleId" {{bind-attr value="moduleId"}}>
-											{{refset-list-item-span 'module-id' moduleId moduleTypes}}
-										{{/if}}																	
-									{{/if}}
-								</td>
-								<td class="label" rel="tooltip" title="Planned publish member effective time"><span class="pointer">Planned Publish Date</span></td><td class="content" colspan=2>				
-									{{effective-time-format expectedReleaseDate}}
-								</td>
-							</tr>
-
-							<tr>
-								<td colspan=2></td>
-								<td class="label">Language Code</td><td class="content">
-									{{#if published}}
+                               <div class="row">
+								<div class="col-md-3">	<span class="label">Language Code</span></div>
+                                         <div class="col-md-9">
+										{{#if published}}
 										{{refset-list-item-span 'language' languageCode languageTypes}}
 									{{else}}
 										{{#if editMode}}
@@ -132,19 +137,26 @@
 											{{refset-list-item-span 'language' languageCode languageTypes}}
 										{{/if}}
 									{{/if}}
-								</td>
-							</tr>
-		
+								</div>
+                                      </div>
+                             
 							{{#if showMetaData}}
-							<tr class="hr"><td colspan=5><hr></td></tr>
+							  <div class="row">
+								<div class="col-md-3">	<span class="pointer label">Last Updated</span></div>
+                                         <div class="col-md-9">
+								{{date-time-format modifiedDate}}
+								</div>
+                                      </div>
+                                  <div class="row">
+								<div class="col-md-3">	<span class="pointer label">Last Updated by</span></div>
+                                         <div class="col-md-9">
+								{{modifiedBy}}
+								</div>
+                                      </div>
 		
-							<tr>
-								<td class="label">Last Updated</td><td class="content">{{date-time-format modifiedDate}}</td>
-								<td class="label">Last Updated by</td><td class="content" colspan=2>{{modifiedBy}}</td>
-							</tr>
 							{{/if}}
-							
-						</table>
+                        </div>
+				
 					</form>
 					</div>
 				</div>
