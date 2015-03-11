@@ -53,32 +53,25 @@
                         	   <div class="col-md-4">
                             <div class="row">
                          <div class="col-md-3">
-                	<span class="label">Description</span></div>
+                	<span class="label">Refset Id</span></div>
 							  <div class="col-md-9">
-									
+									{{#if published}}{{sctId}}{{/if}}
                 </div></div>
                         </div>
                         	   <div class="col-md-4">
                             <div class="row">
                          <div class="col-md-3">
-                	<span class="label">Description</span></div>
+                	<span class="label">UUID</span></div>
 							  <div class="col-md-9">
-									
+									{{uuid}}
                 </div></div>
                         </div>
 						<table width="100%">
 							
 							<tr class="hr"><td width="100"></td><td width="300"><td width="100"></td>
 
-							<tr>
 							
-								
-							</tr>
 
-							<tr>
-								<td class="label">Refset Id</td><td class="content">{{#if published}}{{sctId}}{{/if}}</td>
-								<td class="label">UUID</td><td class="content" colspan=2>{{uuid}}</td>
-							</tr>
 		
 							<tr>
 								<td class="label">Refset Type Id</td><td class="content">
