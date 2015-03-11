@@ -25,23 +25,54 @@
 	        <div class="panel-collapse collapse in">
 	            <div id="collapseOne" class="panel-body">
 	   				<form class="refset-header">
-						
+						   <div class="col-md-4">
+                          
+                             	{{#if published}}
+								  <div class="row">
+                         <div class="col-md-3">	
+                             <span class="label">Description</span></div>
+									 <div class="col-md-9">{{description}}</div>
+                                      </div>
+								{{else}}
+            
+							 	{{#if editMode}}
+                               <div class="row">
+                                   	 <div class="col-md-3">	
+                             <span class="label">Description</span></div>
+									 <div class="col-md-9">{{textarea value=description class="form-control"}}</div>
+									{{else}}
+									 <div class="col-md-3">	
+                             <span class="label">Description</span></div>
+										 <div class="col-md-9">{{description}}</div>
+									{{/if}}
+                                   </div>
+								{{/if}}
+									
+                </div>
+                    
+                        	   <div class="col-md-4">
+                            <div class="row">
+                         <div class="col-md-3">
+                	<span class="label">Description</span></div>
+							  <div class="col-md-9">
+									
+                </div></div>
+                        </div>
+                        	   <div class="col-md-4">
+                            <div class="row">
+                         <div class="col-md-3">
+                	<span class="label">Description</span></div>
+							  <div class="col-md-9">
+									
+                </div></div>
+                        </div>
 						<table width="100%">
 							
 							<tr class="hr"><td width="100"></td><td width="300"><td width="100"></td>
 
 							<tr>
-								{{#if published}}
-									<td class="label">Description</td>
-									<td class="content title" colspan="4">{{description}}</td>
-								{{else}}
-									{{#if editMode}}
-										<td class="content" colspan="5">{{textarea value=description class="form-control"}}</td>
-									{{else}}
-										<td class="label">Description</td>
-										<td class="content title" colspan="4">{{description}}</td>
-									{{/if}}
-								{{/if}}
+							
+								
 							</tr>
 
 							<tr>
