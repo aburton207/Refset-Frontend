@@ -187,7 +187,7 @@
 		<div class="upload-btn"><input type="file" id="refsetUploadFileInput" /></div>
 		<button {{action "initRefsetImport"}} class="btn btn-success btn-side-menu edit-refset clear-import">Upload and Create Refset</button>
 		{{#if potentialMembersToImport}}
-			<button {{action 'clearImportList' id}} class="btn btn-default btn-side-menu">Clear import list</button>
+			<button {{action 'clearImportList' id}} class="btn btn-default btn-side-menu delete-refset">Clear import list</button>
 		{{/if}}
 		
 		{{#if getConceptDataInProgress}}		

@@ -250,7 +250,8 @@ select#filterSelect:focus {
 .edit-refset-members li.Status-Id .active-btn{padding:8px;background-color:#1eb07b;color:#fff;width:100%;text-align:center;}
 
 /*Snomed Grey Headings*/
-.title-headings{background-color:#f6f7f6}
+.title-headings{background-color:#f6f7f6;padding-right:15px;}
+.sub-header{padding-right:15px}
 /*Meta Row heading */
 .metarow-heading{background-color:#f6f7f6; border-top:1px solid #eeecec; width:100%;float:left;}
 .metarow-heading a{color:#7b7b7c; font-family: "museo300";}
@@ -589,7 +590,7 @@ line-height:13px;}
 .refset-id {width:10%;}
 .desc-id{width:25%;}
 .lang-id{width:7%}
-.refset-id{width:8%;}
+.refset-id{width:10%;}
 .module-id{width:14%}
 .comp-id{width:14%}
 .status-id{width:8%;}
@@ -607,7 +608,7 @@ line-height:13px;}
 .refset-id {width:10%;}
 .desc-id{width:25%;}
 .lang-id{width:7%}
-.refset-id{width:8%;}
+.refset-id{width:10%;}
 .module-id{width:14%}
 .comp-id{width:14%}
 .status-id{width:8%;}
