@@ -148,15 +148,24 @@
 				            	{{#with controller.moduleTypesArray as moduleTypesArray }}
 									 {{#collection Ember.ListView contentBinding="filteredImportMembers" height=400 rowHeight=59 width="100%"}}
 										<div {{bind-attr class=':list-group-item :member-list-item meta.conceptActive::inactiveConcept meta.deleteConcept:deleteConcept'}}>
-											<span class="trashIcon"><a {{action 'toggleImportMember' referencedComponentId}} {{bind-attr class=':pointer :icon meta.deleteConcept:undelete:delete'}}"></a></span>
+									        <ul class="edit-refset-members">
+												
+			
+                             
+                                    	<li class="tickIcon"><a {{action 'toggleImportMemberActive' referencedComponentId}} {{bind-attr class=':pointer :icon active:tick:cross'}}"></a></li>
+                                  <li class="Referenced-Component-Id">{{referencedComponentId}}</li>
+                        <li class="Description-Id">{{description}}</li>
+										
+											<li class="trashIcon"><a {{action 'toggleImportMember' referencedComponentId}} {{bind-attr class=':pointer :icon meta.deleteConcept:undelete:delete'}}"></a></li>
 		
-											<div class="listViewRow"><span class="sctid">{{referencedComponentId}}</span> | <span class="description">{{description}}</span> |</div>						
+															
 		
-											<span class="tickIcon"><a {{action 'toggleImportMemberActive' referencedComponentId}} {{bind-attr class=':pointer :icon active:tick:cross'}}"></a></span>
+										
 		
-											<label><span>{{view Em.Select value=content.moduleId content=moduleTypesArray optionValuePath="content.id" optionLabelPath="content.label" class="form-control"}}</span></label>
+											<li class="Description-Id"><label><span>{{view Em.Select value=content.moduleId content=moduleTypesArray optionValuePath="content.id" optionLabelPath="content.label" class="form-control"}}</span></label></li>
 					
-											{{#unless meta.conceptActive}}<label class="inactiveMemberText">Note: This component is INACTIVE</label>{{/unless}}
+											{{#unless meta.conceptActive}}<li><label class="inactiveMemberText">Note: This component is INACTIVE</label>{{/unless}}</li>
+										       </ul>
 										</div>
 									  {{/collection}}
 								  {{/with}}
@@ -203,8 +212,8 @@
 		
 		{{#unless isRF2Import}}
 		{{#if potentialMembersToImport}}
-			</div>
-			
+			</div></div>
+		
 			<h2>Filter concepts</h2>
 		
 			<p>NOTE: All listed members will be imported regardless of this filter, which will only limit what you can view, not what wll be imported.
@@ -223,7 +232,7 @@
 			
 		{{/if}}
 		{{/unless}}
-				
+			</div>		
 
 		
 	</div>

@@ -273,7 +273,7 @@
 														<span class="right rowIconBtn"><a class="pointer icon info" {{action 'showMetaData' this.content}}></a></span>
 														{{#if memberHasPublishedStateHistory}}<span class="right rowIconBtn"><a class="pointer icon history" {{action 'showHistory' this.content}}></a></span>{{/if}}
 
-												  <li class="Referenced-Component-Id">{{referencedComponent.id}}</span> </li>
+												  <li class="Referenced-Component-Id">{{referencedComponent.id}}</li>
                         <li class="Description-Id"><span class="description pointer" rel="tooltip" {{bind-attr title="referencedComponent.label"}}>{{referencedComponent.label}}</span> </li>
 				<li class="Time-Id"><span class="effective-time">{{effective-time-format effectiveTime}}</span></li>
 													<li class="Status-Id"><span {{bind-attr class=':active active::inactiveMemberText'}}><span class="status">{{#if active}}<span class="active-btn">Active</span>{{else}}<span class="inactive-btn">Inactive</span>{{/if}}</span></span></li>
