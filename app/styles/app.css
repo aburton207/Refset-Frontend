@@ -57,9 +57,10 @@ p.filterItem {
     margin-bottom:0;
     border-radius:0;
     background:none;
-    padding:10px 20px;
+    padding:10px 15px;
     font-family:"museo500";
-    font-size:14px;
+    font-size:12px;
+	line-height:15px;
     color:#2c2d2f
 }
 
@@ -68,13 +69,14 @@ p.filterItem {
     background-color:#fff;
 	 font-family:"museo500";
     margin:0;
-    font-size:14px;
+    font-size:12px;
+	line-height:15px;
     border-radius:0;
     padding:12px 20px
 }
 body {
     font-family:Roboto,Oxygen,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size:14px;
+    font-size:12px;
     line-height:1.42857143;
     color:#5e5f61;
     background-color:#eeecec
@@ -85,7 +87,7 @@ body {
 	border-color: #e7e7e7;
 margin: 0px;
 border: none;
-padding: 0px 0px 5px 7px;
+padding: 0px;
 }
 /*Dashboard Sidebar*/
 .dashboard-sidebar h2{padding:15px 20px!important;}
@@ -125,10 +127,10 @@ padding: 0px 0px 5px 7px;
     padding:4px 0px;
     border-radius:0
 }
-button:focus{-webkit-appearance:none;
-    -moz-appearance:none;}
-button {
-    outline: none!important;
+a:focus, button:focus, select:focus{-webkit-appearance:none;
+    -moz-appearance:none;outline: none!important;}
+button, select{
+    outline: none!important;font-weight:normal;
 }
 #header a {
     color:#fff;
@@ -180,42 +182,97 @@ hr {
 }
 /* Filter Headings */
 .left-filter {
-    width:75%;
-    float:left;
-    min-height:35px
+    width: 82%;
+    float: left;
+    min-height: 35px
 }
-
 .right-filter {
-    width:25%;
-    display:inline-block;
-	float:right;
+    width: 18%;
+    display: inline-block;
+    float: right;
 }
-
-.filterItem.sctid focus, 
+.filterItem.sctid focus,
 select#filterSelect:focus {
-    outline:0;
+    outline: 0;
 }
-
 .sctid input {
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    appearance:none;
-    padding:12px 20px;
-    border-radius:0;
-    color:#7f7f7f;
-    border:none
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 12px 20px;
+    border-radius: 0;
+    color: #7f7f7f;
+    border: none
+}
+/*Left Nav Filters*/
+
+button:focus,
+select#filterSelect,
+select#menufilter,
+.metadata-btn {
+    outline: 0
+}
+#filterSelect {
+    background: #fff;
+    border-radius: 0;
+    color: #7f7f7f
+}
+select#filterSelect {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(/assets/img/arrow-drop.png) no-repeat 95% 50%;
+    padding: 12px 15px;
+	text-align:left;
+	font-size:12px;
+    border-radius: 0;
+    color: #7f7f7f!important;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid #eeecec;
+    margin-bottom: 0;
+}
+select.menufilter {
+    background-color: #f6f7f6!important;
+    color: #009bd5!important;
+}
+.filterdropdown select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(/assets/img/arrow-drop.png) no-repeat 95% 50%;
+    background-color: #fff;
+    padding: 12px 15px;
+	  font-family:"museo500";
+	text-align:left;
+	font-size:12px;
+    border-radius: 0;
+    color: #7f7f7f;
+    border: none;
+    margin: 0
 }
 @media (min-width: 768px) {
 .container {
     width:750px
 }
 /*columns for new refset*/
-.new-refset .col-md-3{width:21%}
-.new-refset .col-md-9{width:79%}
-.new-refset .row{padding-top:5px;}
-.new-refset .label, .new-refset .label label{white-space:normal;font-family:"museo300";font-size:13px;color:#2c2d2f;line-height:14px;text-align:left;}
+.new-refset .col-md-3{width:23%;line-height:13px;font-size:12px;}
+.new-refset .col-md-9{width:76%}
+.new-refset .col-md-4.third-column .row{padding-bottom:10px;}
+.new-refset .col-md-4.first-column{padding-left:0px;}
+.new-refset .col-md-4.second-column{padding-left:0px;}
+.new-refset .col-md-4.third-column{padding-right:0px;}
+
+.new-refset .col-md-4.third-column .col-md-3{width:29%;}
+.new-refset .col-md-4.third-column .col-md-9{width:70%;}
+
+.new-refset .label, .new-refset .label label{white-space:normal;font-family:"museo300";font-size:12px;color:#2c2d2f;line-height:14px;text-align:left;}
 .new-refset select, .new-refset input, .new-refset textarea, .new-refset #newRefsetModuleId{padding:8px;border-radius:0px!important;background-color:#f6f7f6;  -webkit-appearance: none;
-  -webkit-border-radius: 0px;}
+  -webkit-border-radius: 0px; appearance:none; -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';outline:none;font-size:12px;}
+	.new-refset select{background: #f6f7f6 url("/assets/img/arrow-drop.png") no-repeat right center;font-size:12px;}
   .new-refset input[type=radio] {
     background-color:#5e5e5e;
 }
@@ -226,6 +283,8 @@ select#filterSelect:focus {
 .clear-import a:hover{border:none;}
 
 /* Edit Refset*/
+.refset-header {font-size:12px;line-height:15px;}
+.refset-header .row{padding-top:10px;}
 .edit-refset-header a:hover{text-decoration:none; color:#009bd5}
 .edit-refset-header{padding-left:0px;font-family: "museo500";}
 .edit-refset-header li {float:left;list-style:none; padding:5px;height:50px;}
@@ -259,57 +318,12 @@ select#filterSelect:focus {
 .metarow-row{ width:100%;float:left;border-top:1px solid #eeecec}
 
 /*Snomed Blue Headings*/
-.sub-header .snomed-ct-heading{width:33%;float:left;background-color:#009bd5}
+.sub-header .snomed-ct-heading{width:35%;float:left;background-color:#009bd5}
 .sub-header .status-heading{width:15%;float:left;background-color:#00a6e5}
 .sub-header .origin-heading{width:29%;float:left;background-color:#00b9ff}
 .sub-header .plus-heading{width:3%;float:left;background-color:#1ac1ff}
 .sub-header .metadata-toggle{background:none;padding:11px 14px 10px 14px;color:#fff;border-color:transparent}
 .sub-header h2{color:#fff; font-size:14px;padding:15px;margin:0px;}
-/*Left Nav Filters*/
-button:focus,
-select#filterSelect,
-select#menufilter,
-.metadata-btn
- {
-    outline:0
-}
-
-#filterSelect {
-    background:#fff;
-    border-radius:0;
-    color:#7f7f7f
-}
-
-select#filterSelect {
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    appearance:none;
-    background:url(/assets/img/downArrow.png) no-repeat 95% 50%;
-    padding:12px 20px;
-    border-radius:0;
-    color:#7f7f7f;
-    border-top:none;
-    border-right:none;
-    border-left:none;
-    border-bottom:2px solid #eeecec;
-    margin-bottom:0
-}
-select.menufilter {
-	background-color:#f6f7f6!important;
-    color:#009bd5!important;
-}
-.filterdropdown select {
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    appearance:none;
-    background:url(/assets/img/downArrow.png) no-repeat 95% 50%;
-    background-color:#fff;
-    padding:12px 20px;
-    border-radius:0;
-    color:#7f7f7f;
-    border:none;
-    margin:0
-}
 /*panels*/
 .panel{border-radius:0px;border:none!important;}
 
@@ -317,14 +331,14 @@ select.menufilter {
 color: #fff;
 background-color: #00a6e5;
 border:none;
-border-radius:0px;
-padding:13px 20px;
+border-radius:0px; padding:13px 15px;
 }
 
 .panel-title {
 font-family:"museo500";
 font-size: 14px;
 color: #fff;
+font-weight:normal;
 }
 /* Buttons */
 /*default button styling */
@@ -347,11 +361,34 @@ color: #fff;
     border:none;
     font-family:"museo500";
     font-size:14px;
-    padding:13px 20px;
+    padding:13px 15px;
     border-radius:0;
-    margin-bottom:0
+    margin-bottom:0;
+	font-weight:normal;
 }
+.edit-heading-icon{
+    color:#fff;
+    background-color:#00a6e5;
+    border:none;
+    font-family:"museo500";
+    font-size:14px;
+    padding:7px 0px 3px 15px;
+    border-radius:0;
+    margin-bottom:0;
+	font-weight:normal;
+}
+.edit-heading-icon h3{font-size:14px; font-family:"museo500";padding-top:6px;font-weight:normal;}
+.edit-heading-icon .left{float:left;width:70%;}
+.edit-heading-icon .right{float:right;width:35px;}
 .editing-refset{background-color:#fff;margin:10px; }
+.new-refset-sidebar .filterItem input  {  border:none;
+    background-color: #FFF;
+    font-family: "museo500";
+    margin: 0px;
+    font-size: 14px;
+    border-radius: 0px;
+    padding: 12px 20px;
+}
 .import-heading{color:#5e5f61;
     background-color:#f6f7f6;
     border-top:none;
@@ -360,7 +397,7 @@ color: #fff;
     border-bottom:2px solid #eeecec;
     font-family:"museo500";
     font-size:14px;
-    padding:13px 20px;
+    padding:13px 15px;
     border-radius:0;
     margin-bottom:0}
 .metadata-btn {
@@ -372,19 +409,19 @@ color: #fff;
     border-bottom:2px solid #eeecec;
     font-family:"museo500";
     font-size:14px;
-    padding:13px 20px;
+    padding:13px 15px;
     border-radius:0;
     margin-bottom:0;
 	   -webkit-appearance:none;
     -moz-appearance:none;
+	text-align:left;
 }
 .metadata-btn:hover{border-bottom:2px solid #eeecec;background-color:#00a6e5;color:#fff!important}
 .edit-refset{ color:#fff;
     background-color:#1eb07b;
     border:none;
     font-family:"museo500";
-    font-size:14px;
-    padding:13px 20px;
+    font-size:14px; padding:13px 15px;
     border-radius:0;
     margin-bottom:10px;
 	text-align:left;}
@@ -396,8 +433,7 @@ color: #fff;
     background-color:#d84148;
     border:none;
     font-family:"museo500";
-    font-size:14px;
-    padding:13px 20px;
+    font-size:14px; padding:13px 15px;
     border-radius:0;
     margin-bottom:0px;
 	text-align:left;}
@@ -405,8 +441,7 @@ color: #fff;
     background-color:#ffa800;
     border:none;
     font-family:"museo500";
-    font-size:14px;
-    padding:13px 20px;
+    font-size:14px; padding:13px 15px;
     border-radius:0;
     margin-bottom:10px;
 	text-align:left;}
@@ -417,8 +452,7 @@ color: #fff;
     background-color:#1eb07b;
     border:none;
     font-family:"museo500";
-    font-size:14px;
-    padding:13px 20px;
+    font-size:14px; padding:13px 15px;
     border-radius:0;
     margin-bottom:0;
 	text-align:left;
@@ -429,9 +463,9 @@ color: #fff;
 
 
 .col-md-9 {
-    width:82%;
+    width:81%;
     float:right;
-	padding-right:0px
+	padding:0px
 }
 
 .col-md-3 {
@@ -457,7 +491,7 @@ color: #fff;
     font-family:"museo500";
     font-size:14px;
     color:#2c2d2f;
-    padding:12px 20px;
+    padding:12px 15px;
     margin:0;
     background:#f6f7f7
 }
@@ -603,12 +637,18 @@ line-height:13px;}
 .meta-wrap{width:100%;background-color:#ededed;float:left;}
 }
 @media screen and (min-width: 1390px) {
-.items{font-size:13px;}
+	/*Snomed Blue Headings*/
+.sub-header .snomed-ct-heading{width:39%;float:left;background-color:#009bd5}
+.sub-header .status-heading{width:15%;float:left;background-color:#00a6e5}
+.sub-header .origin-heading{width:28%;float:left;background-color:#00b9ff}
+.sub-header .plus-heading{width:3%;float:left;background-color:#1ac1ff;border:none;}
+
+.items{font-size:12px;}
 /*Table Widths*/
 .refset-id {width:10%;}
 .desc-id{width:25%;}
 .lang-id{width:7%}
-.refset-id{width:10%;}
+.refset-id{width:14%;}
 .module-id{width:14%}
 .comp-id{width:14%}
 .status-id{width:8%;}

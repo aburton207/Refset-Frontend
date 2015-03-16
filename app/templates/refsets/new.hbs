@@ -14,7 +14,7 @@
 					
 					<form id="refset-header" class="refset-header">
             <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 first-column">
                 
                 {{#if isRF2Import}}
                 <div class="row">
@@ -46,7 +46,7 @@
                          </div>
                 </div>
                 </div>
-                 <div class="col-md-4">
+                 <div class="col-md-4 second-column">
                      <div class="row">
                          <div class="col-md-3">
                 	<span class="label">Language</span></div>
@@ -59,7 +59,7 @@
 									 <div class="col-md-9">{{snomed-data-dropdown valueBinding="moduleId" dataType="moduleTypesArray" id="newRefsetModuleId" class="form-control"}}
 					  							
                 </div></div></div>
-                 <div class="col-md-4">
+                 <div class="col-md-4 third-column">
            <div class="row">
              <div class="col-md-3">  <span class="label">Refset Members Type</span></div>
 						
@@ -179,7 +179,7 @@
 	</div>
 							
 						
-	<div class="col-md-3">	
+	<div class="col-md-3 new-refset-sidebar">	
   <div class="edit-heading">Editing</div>
               <div class="editing-refset clearfix">
                   		{{#unless getConceptDataInProgress}}		
@@ -189,7 +189,7 @@
 		{{/unless}}
                   </div>
 		<!-- This requires vendor/my_utilities/drag_drop_file_upload.js --->
-          <div class="edit-heading">Import Members <a {{action 'showImportHelp' }}class="right icon info pointer"></a></div>
+          <div class="edit-heading-icon clearfix"><span class="left"><h3>Import Members </h3></span>	<span class="right"><a {{action 'showImportHelp' }}class="right icon info pointer"></a></span></div>
 		
 		<div id="fileUploadDropZone" class="fileUploadDropZone"><span id="droptext">Drag an RF2 file, a file of component IDs or an individual component from the Snomed CT browser here.<br><br>Alternatively use the file requestor below to choose a file.</span></div>
         <div class="editing-refset clearfix">
@@ -198,30 +198,37 @@
 		{{#if potentialMembersToImport}}
 			<button {{action 'clearImportList' id}} class="btn btn-default btn-side-menu delete-refset">Clear import list</button>
 		{{/if}}
-		
+		</div>
 		{{#if getConceptDataInProgress}}		
-			<h2>Importing member file</h2>
+			 <div class="edit-heading">Importing Member File</div>
 			{{bs-progress progressBinding="importProgress" type="info" stripped="true"}}
-			<p><b>Please wait...</b></p>
+			 <div class="editing-refset clearfix"><p><b>Please wait...</b></p></div>
 		{{else}}
 			{{#if importError}}
-				<h2>Importing failed</h2>
-				<p><b{{importError}}</b></p>
+         <div class="edit-heading">Importing Failed</div>
+				<h2></h2>
+				 <div class="editing-refset clearfix"><p>{{importError}}</p></div>
 			{{/if}}
 		{{/if}}
 		
 		{{#unless isRF2Import}}
 		{{#if potentialMembersToImport}}
-			</div></div>
-		
-			<h2>Filter concepts</h2>
+			
+		 <div class="edit-heading">Filter concepts</div>
+	 <div class="editing-refset clearfix">
 		
 			<p>NOTE: All listed members will be imported regardless of this filter, which will only limit what you can view, not what wll be imported.
-			
-			<p class="filterItem">
-				Filter by description or referenced component id: <a {{action 'clearDescriptionFilter'}} class="right pointer">clear</a><br>
-				{{input type="text" value=filterByDescription placeholder="type filter here..." class="form-control"}}
 			</p>
+         		</div>
+         <div class="filterItem component-id">
+      
+		<div class="left-filter">
+        <p class="filterItem">
+		Filter by description or referenced component id:</p> </div>
+             <div class="right-filter"><a {{action 'clearDescriptionFilter'}} class="right pointer"><img src="assets/img/trashbin.png" width="35" height="43" alt=""/></a></div>
+		<div class="filterinputs clearfix">	{{input type="text" value=filterByDescription placeholder="type filter here..." class="form-control"}} </div>
+		
+           
 
 			<p class="filterItem">
 				Show: <br>
@@ -234,6 +241,6 @@
 		{{/unless}}
 			</div>		
 
-		
+
 	</div>
 </div>

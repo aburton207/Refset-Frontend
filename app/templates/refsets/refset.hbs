@@ -400,7 +400,7 @@
             </div>
 			{{#if meta}}
 				{{#if editMode}}
-					<button class="btn btn-default btn-side-menu icon-btn metadata-btn border-top" {{action 'toggleMetaData'}}><span class="btn-text">{{#if showMetaData}}Hide{{else}}Show{{/if}} Metadata</span><span {{bind-attr class=':pointer  showHeaderMetaData:hideinfo:info'}}></span></button>
+					<button class="btn btn-default btn-side-menu metadata-btn border-top" {{action 'toggleMetaData'}}><span class="btn-text">{{#if showMetaData}}Hide{{else}}Show{{/if}} Metadata</span><span {{bind-attr class=':pointer  showHeaderMetaData:hideinfo:info'}}></span></button>
 
 					
 
@@ -427,7 +427,7 @@
 				{{else}}
 					{{#if active}}
 						<button class="btn btn-default btn-side-menu icon-btn metadata-btn border-top" {{bind-attr class=':pointer  showHeaderMetaData:hideinfo:info'}} {{action 'toggleMetaData'}}><span class="btn-text">{{#if showMetaData}}Hide{{else}}Show{{/if}} Metadata</span><span {{bind-attr class=':pointer  showHeaderMetaData:hideinfo:info'}}></span></button>
-						<button class="btn btn-default btn-side-menu icon-btn metadata-btn" {{action 'exportRefset'}}><span class="btn-text">Export Refset Pseudo Delta RF2</span><span {{bind-attr class=':pointer :icon :link'}}></span></button>
+						<button class="btn btn-default btn-side-menu icon-btn metadata-btn" {{action 'exportRefset'}}><span class="btn-text">Export Refset Pseudo Delta RF2</span><span {{bind-attr class=':pointer  :link'}}></span></button>
 					{{/if}}
 				{{/if}}
 
